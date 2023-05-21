@@ -12,15 +12,17 @@ module.exports = {
         }
     },
     plugins: [
-        'import',
+        'react',
         '@typescript-eslint',
-        'react'
+        'import',
+        'simple-import-sort'
     ],
     extends: [
         'eslint:recommended',
         'plugin:react/recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:react-hooks/recommended',
+        'plugin:import/recommended',
         'prettier'
     ],
     rules: {
@@ -58,7 +60,44 @@ module.exports = {
             'error',
             'as-needed'
         ],
-        'react/react-in-jsx-scope': 'off'
+        'react/react-in-jsx-scope': 'off',
+        // simple-import-sort
+        'simple-import-sort/imports': [
+            'warn',
+            {
+                groups: [
+                    // Side effect imports.
+                    [ '^\\u0000' ],
+                    [
+                        '^react',
+                        '^@?\\w'
+                    ],
+                    [ '@/router' ],
+                    [
+                        '@/layout',
+                        '@/pages',
+                        '@/components'
+                    ],
+                    [
+                        '@/store',
+                        '@/services',
+                        '@/hooks'
+                    ],
+                    [ '@/utils' ],
+                    [
+                        '@/assets',
+                        '@/constants',
+                        '@/types'
+                    ],
+                ],
+            },
+        ],
+        'simple-import-sort/exports': 'error',
+    },
+    settings: {
+        'import/resolver': {
+            typescript: {}
+        }
     },
     ignorePatterns: [
         '**/test/*',

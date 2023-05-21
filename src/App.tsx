@@ -1,11 +1,11 @@
-function App() {
+import { FC } from 'react';
+import { RouterProvider } from 'react-router-dom';
 
-    return (
-        <div>
-            <h4>안녕</h4>
-            수빈이와 조현이와 금시리
-        </div>
-    );
-}
+import router from '@/router';
+
+const App: FC = () => {
+
+    return <RouterProvider router={router} />;
+};
 
 export default App;

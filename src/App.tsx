@@ -1,13 +1,11 @@
-import './App.css'
+import { FC } from 'react';
+import { RouterProvider } from 'react-router-dom';
 
-function App() {
+import router from '@/router';
 
-    return (
-        <div>
-            <h4>안녕</h4>
-            수빈이와 조현이와 금시리
-        </div>
-    )
-}
+const App: FC = () => {
 
-export default App
+    return <RouterProvider router={router} />;
+};
+
+export default App;
